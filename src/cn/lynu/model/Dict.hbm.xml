@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	<hibernate-mapping>
+	  <class name="cn.lynu.model.Dict" table="t_dict">
+	    <id name="did" column="did">
+	      <generator class="increment"></generator>
+	    </id>
+	    
+		<!--字段对应表中的属性名-->
+	    <property name="dictName" column="dictName"/>
+
+
+	  </class>
+	</hibernate-mapping>

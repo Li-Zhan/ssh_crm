@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.lynu.model.Visit" table="t_visit">
+		<id name="vid" column="vid">
+			<generator class="native"></generator>
+		</id>
+
+		<!--字段对应表中的属性名 -->
+		<property name="vaddress" column="vaddress" />
+		<property name="vcontent" column="vcontent" />
+
+		<many-to-one name="user" class="cn.lynu.model.User"
+			column="uvid"></many-to-one>
+
+		<many-to-one name="customer" class="cn.lynu.model.Customer"
+			column="cvid"></many-to-one>
+	</class>
+</hibernate-mapping>

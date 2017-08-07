@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	<hibernate-mapping>
+	  <class name="cn.lynu.model.Customer" table="t_customer">
+	    <id name="cid" column="cid">
+	      <generator class="native"></generator>
+	    </id>
+	    
+		<!--字段对应表中的属性名-->
+	    <property name="custName" column="custName"/>
+<!-- 	    <property name="custLevel" column="custLevel"/> -->
+        <property name="custSource" column="custSource"/>
+        <property name="custLinkman" column="custLinkman"/>
+        <property name="custPhone" column="custPhone"/>
+        <property name="custMobile" column="custMobile"/>
+        <property name="custAddress" column="custAddress"/>
+        <property name="custZip" column="custZip"/>
+        <property name="custFax" column="custFax"/>
+        <property name="custWebsite" column="custWebsite"/>
+        
+        <!-- 配置一对多 -->
+        <!-- Hibernate的外键默认是双向维护,会出现一方修改，另一方数据丢失，
+                                 这时要使用inverse使一方放弃维护 ，但是如果不加级联cascade，删除会报错。
+                                 如果有需要一方放弃维护，而不使用级联，只有用底层sql来删除，框架局限-->
+        <set name="setLinkMan" inverse="true" cascade="delete">
+          <key column="clid"/>
+          <one-to-many class="cn.lynu.model.LinkMan"/>
+        </set>
+        
+        <set name="setVisit">
+          <key column="cvid"></key>
+          <one-to-many class="cn.lynu.model.Visit"/>
+        </set> 
+<!--         <set name="setUser" table="t_visit" lazy="true" cascade="all">
+          <key column="cvid"></key>
+          <many-to-many class="cn.lynu.model.User" column="uvid"></many-to-many>
+        </set> -->
+        
+        <many-to-one name="dict" class="cn.lynu.model.Dict" column="cdid"></many-to-one>
+
+	  </class>
+	</hibernate-mapping>

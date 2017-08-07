@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.lynu.model.User" table="t_user">
+		<id name="did" column="did">
+			<generator class="native"></generator>
+		</id>
+
+		<!--字段对应表中的属性名 -->
+		<property name="userName" column="userName" />
+		<property name="password" column="password" />
+		<property name="address" column="address" />
+
+        <set name="setVisit">
+			<key column="uvid"></key>
+			<one-to-many class="cn.lynu.model.Visit" />
+		</set> 
+<!-- 		<set name="setCustomer" table="t_visit" lazy="true" cascade="all">
+		  <key column="uvid"></key>
+		  <many-to-many class="cn.lynu.model.Customer" column="cvid"></many-to-many>
+		</set> -->
+	</class>
+</hibernate-mapping>

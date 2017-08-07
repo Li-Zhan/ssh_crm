@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	<hibernate-mapping>
+	  <class name="cn.lynu.model.LinkMan" table="t_linkman">
+	    <id name="lid" column="lid">
+	      <generator class="native"></generator>
+	    </id>
+	    
+		<!--字段对应表中的属性名-->
+	    <property name="lkmName" column="lkmName"/>
+	    <property name="lkmGender" column="lkmGender"/>
+        <property name="lkmPhone" column="lkmPhone"/>
+        <property name="lkmMobile" column="lkmMobile"/>
+        
+        <!-- 配置多对一 -->
+        <many-to-one name="customer" column="clid" class="cn.lynu.model.Customer"></many-to-one>
+
+	  </class>
+	</hibernate-mapping>
